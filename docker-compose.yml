@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  hannahstebnicki:
+    build: .
+    container_name: hannahstebnicki
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - memcached
+    links:
+      - memcached
+
+  memcached:
+    image: memcached
